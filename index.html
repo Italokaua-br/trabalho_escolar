@@ -655,6 +655,18 @@ button:active {
   </div>
 </div>
 
+<div style="height:                                        100px;"></div>
+
+
+<h2>
+  Numero para contato: 55 (19) 99631-4545
+</h2>
+
+
+
+<h2>
+  E-mail: gatedoors@gmail.com
+</h2>
 
 
 
@@ -675,8 +687,97 @@ button:active {
 
 
 
+<!-----------para o desenvolvedor ----------->
+<div style="height:                                                                120px;"></div>
+<!-- From Uiverse.io by Creatlydev --> 
+  
+  <style>
+    .button {
+      line-height: 1;
+      text-decoration: none;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.75rem;
+      background-color: var(--clr);
+      color: #000000;
+      border-radius: 10rem;
+      font-weight: 600;
+      padding: 0.75rem 1.5rem;
+      padding-left: 20px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition: background-color 0.3s;
+      border: none;
+      cursor: pointer;
+      margin: 0 auto;
+      max-width: 90%;
+      box-sizing: border-box;
+    }
 
+    .button__icon-wrapper {
+      flex-shrink: 0;
+      width: 25px;
+      height: 25px;
+      position: relative;
+      color: var(--clr);
+      background-color: #fff;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+    }
 
+    .button:hover {
+      background-color: #22ff00;
+    }
 
+    .button:hover .button__icon-wrapper {
+      color: #319a3b;
+    }
+
+    .button__icon-svg--copy {
+      position: absolute;
+      transform: translate(-150%, 150%);
+    }
+
+    .button:hover .button__icon-svg:first-child {
+      transition: transform 0.3s ease-in-out;
+      transform: translate(150%, -150%);
+    }
+
+    .button:hover .button__icon-svg--copy {
+      transition: transform 0.3s ease-in-out 0.1s;
+      transform: translate(0);
+    }
+
+    .button-container {
+      margin-top: 80px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="button-container">
+    <a href="login.html" class="button" style="--clr: #7808d0">
+      <span class="button__icon-wrapper">
+        <svg viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg"
+          class="button__icon-svg" width="10">
+          <path
+            d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"
+            fill="currentColor"></path>
+        </svg>
+
+        <svg viewBox="0 0 14 15" fill="none" width="10" xmlns="http://www.w3.org/2000/svg"
+          class="button__icon-svg button__icon-svg--copy">
+          <path
+            d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"
+            fill="currentColor"></path>
+        </svg>
+      </span>
+      For Devs
+    </a>
+  </div>
 </body>
 </html>
