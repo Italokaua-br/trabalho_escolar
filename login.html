@@ -83,9 +83,6 @@
     <div id="errorMessage" class="error"></div>
   </div>
 
-  <!-- Link oculto para download do PPT -->
-  <a id="pptDownload" href="apresentacao.ppt" download style="display: none;"></a>
-
   <script>
     document.getElementById('loginForm').addEventListener('submit', function(e) {
       e.preventDefault();
@@ -96,7 +93,8 @@
 
       if (username === 'admin' && password === '1234') {
         errorMessage.textContent = '';
-        document.getElementById('pptDownload').click(); // Faz o download do .ppt
+        // Redireciona para o link completo do arquivo
+        window.location.href = 'https://italokaua-br.github.io/trabalho_escolar/apresentacao.ppt';
       } else {
         errorMessage.textContent = '❌ Usuário ou senha incorretos.';
       }
