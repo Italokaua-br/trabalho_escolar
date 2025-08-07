@@ -15,7 +15,7 @@
       margin: 0;
       color: #e5e5e5;
     }
-    .login-container, .file-container {
+    .container {
       background-color: #1a1a1a;
       padding: 30px;
       border-radius: 10px;
@@ -75,7 +75,7 @@
 </head>
 <body>
 
-  <div class="login-container" id="loginContainer">
+  <div id="loginContainer" class="container">
     <h2>Login</h2>
     <form id="loginForm">
       <input type="text" id="username" placeholder="Usuário" required />
@@ -85,7 +85,7 @@
     <div id="errorMessage" class="error"></div>
   </div>
 
-  <div class="file-container" id="fileContainer" style="display:none;">
+  <div id="fileContainer" class="container" style="display:none;">
     <h2>Selecione o arquivo .ppt</h2>
     <input type="file" id="fileInput" accept=".ppt,.pptx" />
     <div id="fileName" class="file-info"></div>
