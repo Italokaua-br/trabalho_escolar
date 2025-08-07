@@ -83,6 +83,9 @@
     <div id="errorMessage" class="error"></div>
   </div>
 
+  <!-- Link oculto para download do PPT -->
+  <a id="pptDownload" href="apresentacao.ppt" download style="display: none;"></a>
+
   <script>
     document.getElementById('loginForm').addEventListener('submit', function(e) {
       e.preventDefault();
@@ -93,8 +96,7 @@
 
       if (username === 'admin' && password === '1234') {
         errorMessage.textContent = '';
-        // Redireciona para o arquivo .ppt na mesma pasta
-        window.location.href = 'apresentacao.ppt';
+        document.getElementById('pptDownload').click(); // Faz o download automático do arquivo .ppt
       } else {
         errorMessage.textContent = '❌ Usuário ou senha incorretos.';
       }
