@@ -2,33 +2,35 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <title>Login</title>
+  <title>Login e Seleção de PPT</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       background-color: #0d0d0d;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       height: 100vh;
       margin: 0;
+      color: #e5e5e5;
     }
-    .login-container {
+    .login-container, .file-container {
       background-color: #1a1a1a;
       padding: 30px;
       border-radius: 10px;
       box-shadow: 0 0 20px rgba(0, 242, 234, 0.2);
-      color: #e5e5e5;
       width: 100%;
       max-width: 400px;
       font-family: "Fira Code", Consolas, monospace;
+      margin-bottom: 20px;
     }
     h2 {
       text-align: center;
       margin-bottom: 20px;
       color: #00f2ea;
     }
-    input {
+    input[type="text"], input[type="password"], input[type="file"] {
       width: 100%;
       padding: 12px;
       margin-bottom: 15px;
@@ -39,7 +41,7 @@
       font-size: 1rem;
       outline: none;
     }
-    input:focus {
+    input[type="text"]:focus, input[type="password"]:focus, input[type="file"]:focus {
       border-color: #00f2ea;
     }
     button {
@@ -63,10 +65,17 @@
       text-align: center;
       margin-top: 10px;
     }
+    .file-info {
+      margin-top: 10px;
+      text-align: center;
+      color: #00f2ea;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
-  <div class="login-container">
+
+  <div class="login-container" id="loginContainer">
     <h2>Login</h2>
     <form id="loginForm">
       <input type="text" id="username" placeholder="Usuário" required />
@@ -76,38 +85,44 @@
     <div id="errorMessage" class="error"></div>
   </div>
 
+  <div class="file-container" id="fileContainer" style="display:none;">
+    <h2>Selecione o arquivo .ppt</h2>
+    <input type="file" id="fileInput" accept=".ppt,.pptx" />
+    <div id="fileName" class="file-info"></div>
+  </div>
+
   <script>
-    document.getElementById("loginForm").addEventListener("submit", function (e) {
+    const loginForm = document.getElementById('loginForm');
+    const errorMessage = document.getElementById('errorMessage');
+    const loginContainer = document.getElementById('loginContainer');
+    const fileContainer = document.getElementById('fileContainer');
+    const fileInput = document.getElementById('fileInput');
+    const fileName = document.getElementById('fileName');
+
+    loginForm.addEventListener('submit', function(e) {
       e.preventDefault();
 
-      const username = document.getElementById("username").value.trim();
-      const password = document.getElementById("password").value.trim();
-      const errorMessage = document.getElementById("errorMessage");
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
 
-      if (username === "admin" && password === "1234") {
-        errorMessage.textContent = "";
-
-        // URL completa do arquivo no GitHub Pages
-        const fileUrl = "https://italokaua-br.github.io/trabalho_escolar/apresentacao.ppt";
-
-        // Criar um link para download forçado
-        const a = document.createElement("a");
-        a.href = fileUrl;
-        a.download = "apresentacao.ppt";
-        document.body.appendChild(a);
-
-        // Dispara o download
-        a.click();
-
-        // Remove o link depois
-        document.body.removeChild(a);
-
-        // Também tenta abrir o arquivo em nova aba (pode baixar ou abrir dependendo do navegador)
-        window.open(fileUrl, "_blank");
+      if (username === 'admin' && password === '1234') {
+        errorMessage.textContent = '';
+        loginContainer.style.display = 'none';
+        fileContainer.style.display = 'block';
       } else {
-        errorMessage.textContent = "❌ Usuário ou senha incorretos.";
+        errorMessage.textContent = '❌ Usuário ou senha incorretos.';
+      }
+    });
+
+    fileInput.addEventListener('change', () => {
+      const file = fileInput.files[0];
+      if (file) {
+        fileName.textContent = `Arquivo selecionado: ${file.name}`;
+      } else {
+        fileName.textContent = '';
       }
     });
   </script>
+
 </body>
 </html>
