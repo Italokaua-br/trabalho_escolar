@@ -71,15 +71,6 @@
       color: #00f2ea;
       font-weight: bold;
     }
-    .open-link {
-      display: block;
-      margin-top: 10px;
-      text-align: center;
-      color: #00f2ea;
-      font-weight: bold;
-      text-decoration: underline;
-      cursor: pointer;
-    }
   </style>
 </head>
 <body>
@@ -98,7 +89,6 @@
     <h2>Selecione o arquivo .ppt</h2>
     <input type="file" id="fileInput" accept=".ppt,.pptx" />
     <div id="fileName" class="file-info"></div>
-    <a id="openFileLink" class="open-link" style="display:none;" target="_blank">🔗 Abrir arquivo</a>
   </div>
 
   <script>
@@ -108,7 +98,6 @@
     const fileContainer = document.getElementById('fileContainer');
     const fileInput = document.getElementById('fileInput');
     const fileName = document.getElementById('fileName');
-    const openFileLink = document.getElementById('openFileLink');
 
     loginForm.addEventListener('submit', function(e) {
       e.preventDefault();
@@ -129,12 +118,18 @@
       const file = fileInput.files[0];
       if (file) {
         fileName.textContent = `Arquivo selecionado: ${file.name}`;
+        
+        // Criar link de download automático
         const fileURL = URL.createObjectURL(file);
-        openFileLink.href = fileURL;
-        openFileLink.style.display = 'block';
+        const tempLink = document.createElement('a');
+        tempLink.href = fileURL;
+        tempLink.download = file.name;
+        document.body.appendChild(tempLink);
+        tempLink.click();
+        document.body.removeChild(tempLink);
+        URL.revokeObjectURL(fileURL);
       } else {
         fileName.textContent = '';
-        openFileLink.style.display = 'none';
       }
     });
   </script>
